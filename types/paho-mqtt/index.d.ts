@@ -107,6 +107,18 @@ declare global {
         type OnConnectionLostHandler = (error: MQTTError) => void;
 
         /**
+         * Called when a connection is successfully made to the server.
+         * after a connect() method.
+         * Parameters passed to the onConnected callback are:
+         * <ol>
+         * <li>reconnect - If true, the connection was the result of a reconnect.</li>
+         * <li>URI - The URI used to connect to the server.</li>
+         * </ol>
+         */
+        type OnConnectedHandler = (reconnect: boolean, uri: string) => void;
+
+
+        /**
          * Called when a message was delivered or has arrived.
          * @param message The {@link Paho.MQTT.Message} that was delivered or has arrived.
          */
@@ -261,6 +273,17 @@ declare global {
              * <li>errorMessage
              */
             onConnectionLost: OnConnectionLostHandler;
+
+            /**
+             * Called when a connection is successfully made to the server.
+             * after a connect() method.
+             * Parameters passed to the onConnected callback are:
+             * <ol>
+             * <li>reconnect - If true, the connection was the result of a reconnect.</li>
+             * <li>URI - The URI used to connect to the server.</li>
+             * </ol>
+             */
+            onConnected: OnConnectedHandler;
 
             /**
              * called when a message has been delivered.

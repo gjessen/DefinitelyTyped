@@ -49,6 +49,10 @@ client.onConnectionLost = (err) => {
     console.log(`connection lost (code ${err.errorCode}): ${err.errorMessage}`);
 };
 
+client.onConnected = (recon,url) => {
+    console.log(`connected, recon =  ${recon}, url = ${url}`);
+};
+
 client.onMessageDelivered = (msg) => {
     console.log(`delivered: ${msg.destinationName}: ${msg.payloadString}`);
     console.log(`len: ${msg.payloadBytes.byteLength}, retained: ${msg.retained}, dup: ${msg.duplicate}, qos: ${msg.qos}`);
